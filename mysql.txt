@@ -1,0 +1,200 @@
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+mysql -u root -p
+
+
+
+
+//to create database
+mysql> CREATE DATABASE imdb;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE imdb;
+Database changed
+mysql> CREATE TABLE actor( act_id int,
+    -> act_name varchar(200),
+    -> act_gender varchar(200)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+mysql> CREATE TABLE genres( gen_id int,
+    -> gen_title varchar(100)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE movie( mov_id int,
+    -> mov_title varchar(100),
+    -> mov_year int,
+    -> mov_lang varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+mysql> CREATE TABLE moviegenres( mov_id int,
+    -> gen_id int
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+mysql> CREATE TABLE moviecast( mov_id int,
+    -> act_id int,
+    -> role varchar(100)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+mysql> CREATE TABLE review( rev_id int,
+    -> rev_name varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+mysql> CREATE TABLE ratings( rev_id int,
+    -> mov_id int,
+    -> no_of_ratings int
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SHOW TABLES;
+
+Current database: imdb
+
++----------------+
+| Tables_in_imdb |
++----------------+
+| actor          |
+| genres         |
+| movie          |
+| moviecast      |
+| moviegenres    |
+| ratings        |
+| review         |
++----------------+
+7 rows in set (0.02 sec)
+mysql>  INSERT INTO actor (act_id, act_name, act_gender)
+    -> VALUES ('1', 'Margot Robbie', 'Female');
+Query OK, 1 row affected (0.01 sec)
+mysql>  INSERT INTO actor (act_id, act_name, act_gender)
+    -> VALUES ('2', 'Jason Momoa', 'male');
+Query OK, 1 row affected (0.01 sec)
+mysql>  INSERT INTO actor (act_id, act_name, act_gender)
+    -> VALUES ('3', 'Shah Rukh Khan', 'male');
+mysql>  INSERT INTO actor (act_id, act_name, act_gender)
+    -> VALUES ('4', 'Harrison Ford', 'male');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  INSERT INTO actor (act_id, act_name, act_gender)
+    -> VALUES ('5', 'Shameik Moore', 'male');
+Query OK, 1 row affected (0.00 sec)
+
+
+
+mysql> INSERT INTO genres (gen_id,gen_title )
+    -> VALUES ('1', 'Adventure, Comedy, Fantasy' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO genres (gen_id,gen_title )
+    -> VALUES ('2', 'Action, Adventure, Fantasy' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO genres (gen_id,gen_title )
+    -> VALUES ('3', 'Action, Thriller' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO genres (gen_id,gen_title )
+    -> VALUES ('4', 'Action, Adventure, Sci-Fi' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO genres (gen_id,gen_title )
+    -> VALUES ('5', 'Animation, Action, Adventure' );
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> INSERT INTO movie (mov_id,mov_title,mov_year,mov_lang )
+    -> VALUES ('1', ' Barbie','2023','English' );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO movie (mov_id,mov_title,mov_year,mov_lang )
+    -> VALUES ('2', ' Aquaman and The Lost Kingdom','2023','English' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO movie (mov_id,mov_title,mov_year,mov_lang )
+    -> VALUES ('3', ' Jawan','2023','Hindi' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO movie (mov_id,mov_title,mov_year,mov_lang )
+    -> VALUES ('4', '  Indiana Jones and the Dial of Destiny','2023','English' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO movie (mov_id,mov_title,mov_year,mov_lang )
+    -> VALUES ('5', ' Spider-Man: Across the Spider-Verse','2023','Multi-lang' );
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> INSERT INTO moviecast (mov_id,act_id,role )
+    -> VALUES ('1', '1','Main lead' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO moviecast (mov_id,act_id,role )
+    -> VALUES ('2', '2','Hero' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO moviecast (mov_id,act_id,role )
+    -> VALUES ('3', '3','Dual role,hero,father&son ' );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO moviecast (mov_id,act_id,role )
+    -> VALUES ('4', '4','Archaeologist ' );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO moviecast (mov_id,act_id,role )
+    -> VALUES ('5', '5','Superhero ' );
+Query OK, 1 row affected (0.01 sec)
+mysql> INSERT INTO moviegenres (mov_id,gen_id )
+    -> VALUES ('1', '1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO moviegenres (mov_id,gen_id )
+    -> VALUES ('2', '2');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO moviegenres (mov_id,gen_id )
+    -> VALUES ('3', '3');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO moviegenres (mov_id,gen_id )
+    -> VALUES ('4', '4');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO moviegenres (mov_id,gen_id )
+    -> VALUES ('5', '5');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO ratings (rev_id,mov_id,no_of_ratings )
+    -> VALUES ('1', '1','7');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO ratings (rev_id,mov_id,no_of_ratings )
+    -> VALUES ('2', '2','6');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO ratings (rev_id,mov_id,no_of_ratings )
+    -> VALUES ('3', '3','8');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO ratings (rev_id,mov_id,no_of_ratings )
+    -> VALUES ('4', '4','7');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO ratings (rev_id,mov_id,no_of_ratings )
+    -> VALUES ('5', '5','9');
+Query OK, 1 row affected (0.01 sec)
+mysql> INSERT INTO review (rev_id,rev_name )
+    -> VALUES ('1', 'HabibieHakim');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO review (rev_id,rev_name )
+    -> VALUES ('2', 'Black Manta');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO review (rev_id,rev_name )
+    -> VALUES ('3', 'itsarpitrks');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO review (rev_id,rev_name )
+    -> VALUES ('4', 'bforrest');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO review (rev_id,rev_name )
+    -> VALUES ('5', 'srdjankostic');
+Query OK, 1 row affected (0.00 sec)
